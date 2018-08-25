@@ -18,18 +18,9 @@ public class Main_File {
     //get video name
 	StringBuilder reverseS = new StringBuilder(fileFolder).reverse();
 	String filename = fileFolder.substring(fileFolder.length()-reverseS.toString().indexOf('/'), fileFolder.length());
-//	String audioFilename = fileFolder + "/" + filename + ".wav";
-	
-//	System.out.println("Start loading video file contents.");
+
     try {
-      //every video in db has 600 frames
-//      for(int i=1; i<=600; i++) {
-//    	  String fileNum = "00";
-//    	  if(i < 100 && i > 9) {
-//    		  fileNum = "0";
-//    	  } else if(i > 99) {
-//    		  fileNum = "";
-//    	  }
+ 
     	  String fullName = fileFolder + "/" + filename + "001.rgb";
     	  
     	  File file = new File(fullName);
@@ -58,32 +49,13 @@ public class Main_File {
           images.add(image);
           is.close();
           System.out.println("End loading frame: " + fullName);
-//      }//end for
+
     } catch (FileNotFoundException e) {
       e.printStackTrace();
     } catch (IOException e) {
       e.printStackTrace();
     }
-//    System.out.println("End loading video contents.");
 
-//	FileInputStream audioStream;
-//	try {
-//		audioStream = new FileInputStream(audioFilename);
-//	} catch (FileNotFoundException e) {
-//	    e.printStackTrace();
-//	    return;
-//	}
-
-	// initializes the playSound Object
-//	PlaySound playSound = new PlaySound(audioStream);
-
-	// plays the sound
-//	try {
-//	    playSound.play();
-//	} catch (PlayWaveException e) {
-//	    e.printStackTrace();
-//	    return;
-//	}
 	
 	V_UI ui = new V_UI(images);
 	ui.showUI();
