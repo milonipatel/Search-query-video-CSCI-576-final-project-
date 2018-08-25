@@ -105,32 +105,8 @@ public class V_UI extends Frame implements ActionListener {
                         }
                 }
                 mse=Math.sqrt(mse);
-	//	mse /= (double) (WIDTH * HEIGHT);
-		
-      //  double maxVal=255;
-	//	double x = Math.pow(maxVal, 2) / mse;
-	//	psnr = 10.0 * Math.log10(x);
-  
+	
 		return mse;
-
-
-/*for(int i = 0;i < q.length;i++) {
-			d += Math.pow(q[i] - db[i], 2.0);
-		}
-		d = Math.sqrt(d);
-		
-		return d;
-*/
-
-
-
-	}
-
-
-
-
-
-
 
 
 	public V_UI(ArrayList<BufferedImage> imgs) {
@@ -175,11 +151,6 @@ resultPanel.add(matchLabel, BorderLayout.SOUTH);
 
 
 	    resultListDisplay = new List(7);
-	//    resultListDisplay.add("Matched Videos:    ");
-
- //String[] data = {"one", "two", "three", "four"};
- //JList<String> myList = new JList<String>(data);
-
 
 	    resultList = new ArrayList<Double>(7);
 	    resultListRankedNames = new ArrayList<String>(7);
@@ -187,26 +158,22 @@ resultListDisplay.setBounds(669, 30, 1035, 1540);
 //list_list = new JList(data);
 
 	    resultPanel.add(resultListDisplay, BorderLayout.SOUTH);
-	    	 //   resultPanel.add(list_list);
+	
 	    resultPanel.setPreferredSize(new Dimension(450,400));
 
 	    loadResultButton = new Button("Load Selected Video");
-	    //loadResultButton.addActionListener(this);
-	   // resultPanel.add(loadResultButton);
-	     //loadResultButton.setVisible(false);
+	
 	    add(resultPanel, BorderLayout.EAST);
 	    
 	    //Video List Panel
 	    Panel listPanel = new Panel();
 	    listPanel.setLayout(new GridLayout(2, 0));
-	    //     listPanel.setLocation(150, 100);
+	  
 	     
         resultListDisplay.addActionListener(this);
 
  resultListDisplay.setPreferredSize(new Dimension(540, 480));
-  //listPanel.setBounds(40, 10, 200, 300);
-  //resultListDisplay.setBounds(469, 30, 235, 140);
-
+  
 	    this.imageLabel = new JLabel(new ImageIcon(images.get(currentFrameNum)));
 	    this.resultImageLabel = new JLabel(new ImageIcon(images.get(currentFrameNum)));
 	    Panel imagePanel = new Panel();
@@ -479,103 +446,7 @@ slider.setPaintLabels(true);
 Dimension d = slider.getPreferredSize();
 slider.setPreferredSize(new Dimension(d.width+100,d.height));
 
-/*
-JSlider  seekBar = new JSlider(0, 20, 0);
-		final Timer increaseValue = new Timer(0, new ActionListener() {// 50 ms interval in each increase.
-	        public void actionPerformed(ActionEvent e) {
-	            if (seekBar.getMaximum() != seekBar.getValue()) {
-	            	if(currentFrameNum % 30 == 0)
-	            	{
-	            		seekBar.setValue(currentFrameNum/30);
-	            	}
-	            	
-	            } else {
-	                ((Timer) e.getSource()).stop();
-	                resultPlayButton.setEnabled(true);
-	          		 resultPauseButton.setEnabled(false);
-	          		 resultStopButton.setEnabled(false);
-	          		 seekBar.setValue(0);
-	            }
-	        }
-	    });
-		seekBar.addMouseListener(new MouseListener()
-		{
-			
-			@Override
-			public void mouseReleased(MouseEvent e)
-			{
-				increaseValue.stop();
-				int scrubIndex = seekBar.getValue();
-				//resultMediaPlayer.setFrameAtIndex(scrubIndex);
-				increaseValue.start();
-				
-			}
 
-			@Override
-			public void mouseClicked(MouseEvent arg0)
-			{
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent arg0)
-			{
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mouseExited(MouseEvent arg0)
-			{
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mousePressed(MouseEvent arg0)
-			{
-				// TODO Auto-generated method stub
-				
-			}			
-		});
-		
-		seekBar.setBounds(401, 299, 352, 32);*/
-		
-		//mainPanel.add(seekBar);
-
-
-
-
-/*
-Timer timer = new Timer(100, new ActionListener() {
-@Override
-        public void actionPerformed(ActionEvent e) {
-     // if(e.getSource() == this.resultPlayButton) {
-        slider.setValue(currentFrameNum);
-       
-    //}
-    }
-
-});
- timer.start();
-
-*/
-//  panel.add(seekBar);
-  //panel.add(hSlider);
-  // panel.add(slider1);
-//resultControlPanel.add(panel);
-  	    psnr_error = new ArrayList<Double>();
-  	    psnr_sum=new ArrayList<Double>();
-
-/*for(int i=0;i<150;i++){
-
-double err= printPSNR(images.get(i), dbImages.get(frm));
-//System.out.println("pppppppppsssssssnnnnnnrrrrrrrr error:"+err);
-frm=frm+1;
-psnr_error.add(err);
-}
-*/
 
 for(int i=0;i<450;i++){
 	double err_sum=0;
@@ -588,52 +459,16 @@ for(int i=0;i<450;i++){
 	System.out.println("i: "+i+" sum of euclidean distances: "+ err_sum);
 
 }
-/*for(int i=450;i<600;i++)
-{
-		double err_sum=0;
-		for(int j=0;j<150;j++){
-		err_sum=err_sum + printPSNR(images.get(j), dbImages.get(i));
 
-	}
-		err_sum=err_sum/150000;
-	psnr_sum.add(err_sum);
-	System.out.println("i: "+i+" error_sum: "+ err_sum);
-}*/
-/*double err_sum=0;
-for(int i=0;i<450;i++){
-	//double err_sum=0;
-	for(int j=0;j<150;j++){
-		err_sum=printPSNR(images.get(j), dbImages.get(i+j));
-       psnr_sum.add(err_sum);
-	}
-	//err_sum=err_sum/150;
-	//psnr_sum.add(err_sum);
-	System.out.println("i: "+i+" error_sum: "+ err_sum);
-}
 
-*/
  Object obj = Collections.max(psnr_sum);
 
  Object obj1 = Collections.min(psnr_sum);
-  // System.out.println("max:"+ obj);
-  // System.out.println("min:"+ obj1);
+
 int ind=Integer.parseInt(frm.toString());
 
 double val=Double.parseDouble(obj1.toString());
 psnr_sum.set( ind, val );
-//System.out.println("indexxxxxxxxxxxxx: "+ind);
-//System.out.println("vallllllllllll: "+val);
-//psnr_sum.get(ind)=val;
-
-//panel.add(gr);
-  /*JFrame f = new JFrame();
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        f.getContentPane().add(new VideoQueryUI(images));
-        f.setSize(400,400);
-        f.setLocation(200,200);
-        f.setVisible(true);
-*/
-
 
 
 //errorLabel.setText("psnr "+err);  
@@ -955,10 +790,8 @@ else if((videoRank*100)>=30 && (videoRank*100)<40){
 			    while (it.hasNext()) {
 			    	Entry pair = (Entry)it.next();
 			    	Double videoRank = (Double)pair.getValue();
-			    	//System.out.println("videoRank: "+videoRank);
-			    	//System.out.println("tmpRank: "+tmpRank);
 			    
-			   //rankorder = new HashMap<String, Double>();
+			    
 
 			    	if(videoRank == tmpRank) {
 			    	
@@ -968,16 +801,6 @@ else if((videoRank*100)>=30 && (videoRank*100)<40){
 			    		resultListRankedNames.add((String)pair.getKey());
 			    		break;
 			    	}
-
-
-
-
-
-
-
-
-
-
 
 
 
