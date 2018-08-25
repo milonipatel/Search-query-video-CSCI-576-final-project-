@@ -92,7 +92,7 @@ public class Find_Match {
 				}
 			}
 			framemap.put(vs[i].videoname, clip);
-			//System.out.println(vs[i].videoname + " " + framemap.get(vs[i].videoname));
+			
 			
 			double simisum = 0.0;
 			k = 0;
@@ -111,7 +111,7 @@ public class Find_Match {
 		
 		//Compare the colors
 		for(int i = 0;i < 7;i++) {
-		//	System.out.println("Vvvvvvvvvviiiiiiiiidddddddddeeeeeeeeoooooooooonnnnuuumb4rrer "+i);
+		
 
 			int[] resembleClips = new int[250];
 			double[] resembleValues = new double[250];
@@ -141,7 +141,7 @@ public class Find_Match {
 				for(int j = 0;j < 250;j++) {
 					if(resembleValues[j] != 0.0) {
 						double simi = distCompare(queryV.rgbCount[r], vs[i].rgbCount[resembleClips[j] + r]);
-						//System.out.println("simi: "+simi);
+						
 						if(simi >= 0.2) {
 							resembleClips[j] = -1;
 							resembleValues[j] = 0.0;
@@ -203,45 +203,6 @@ public class Find_Match {
 		vs[5].videoname = "starcraft";
 		vs[6].videoname = "traffic";
 
-/*
-
-  for(int i = 0;i < 7;i++) {
-			try {
-				vs[i].readAndextractSound();
-			}catch(PlayWaveException e) {
-				e.printStackTrace();
-			}catch(IOException e) {
-				e.printStackTrace();
-			}
-			
-			vs[i].readAndextractVideo();
-			
-			vs[i].extractColor();
-			
-			File fout = new File("video" + i + ".txt");
-			FileOutputStream fos = new FileOutputStream(fout);
-		 
-			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
-			bw.write(Integer.toString(vs[i].sound));
-			bw.newLine();
-			for(int j = 0;j < vs[i].framenum;j++) {
-				for(int k = 0;k < 99;k++) {
-					bw.write(Integer.toString(vs[i].imgbytes[j][k]));
-				}
-				bw.newLine();
-			}
-			for(int j = 0;j < vs[i].framenum;j++) {
-				for(int k = 0;k < 3;k++) {
-					bw.write(Double.toString(vs[i].rgbCount[j][k]));
-					bw.write(" ");
-				}
-				bw.newLine();
-			}
-			bw.close();
-		}
-		
-
-*/
 
 
 
